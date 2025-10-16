@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelProject.DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20251014134938_mig1")]
+    [Migration("20251016111756_mig1")]
     partial class mig1
     {
         /// <inheritdoc />
@@ -70,8 +70,11 @@ namespace HotelProject.DataAccessLayer.Migrations
 
             modelBuilder.Entity("HotelProject.EntityLayer.Concrete.Service", b =>
                 {
-                    b.Property<string>("ServiceId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("ServiceId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ServiceId"));
 
                     b.Property<string>("Description")
                         .IsRequired()
