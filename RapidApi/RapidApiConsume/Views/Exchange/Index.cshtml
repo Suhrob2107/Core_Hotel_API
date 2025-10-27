@@ -1,0 +1,28 @@
+﻿@model List<RapidApiConsume.Models.ExchangeRate>
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-5">
+    <h2>Döviz Kurları</h2>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Döviz Kodu</th>
+                <th>Birim Fiyat (TRY)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.currency</td>
+                    <td>@item.exchange_rate_buy</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger mt-3">@ViewBag.Error</div>
+}
